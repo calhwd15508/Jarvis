@@ -44,8 +44,19 @@ dependencies {
         exclude group: 'org.apache.httpcomponents'
     }
     compile 'com.google.android.gms:play-services-auth:11.0.4'
+
+    //Firebase Database
+    compile 'com.google.firebase:firebase-core:11.0.4'
+    compile 'com.google.firebase:firebase-database:11.0.4'
+
+    //Weather
+    compile 'zh.wang.android:yweathergetter4a:1.3.0'
 }
 //PocketSphinx
 ant.importBuild 'assets.xml'
 preBuild.dependsOn(list, checksum)
 clean.dependsOn(clean_assets)
+
+//Firebase Database
+apply plugin: 'com.google.gms.google-services'
+

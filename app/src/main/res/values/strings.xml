@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">JarvisV1.1</string>
+    <string name="app_name">VioletV1.0</string>
+    <string name="AI_name">Violet</string>
     <string name="start_button">START</string>
 </resources>

@@ -13,12 +13,12 @@ import java.util.Locale;
 public class TexttoSpeech implements TextToSpeech.OnInitListener{
 
     private TextToSpeech tts;
-    private final int ttsWait = 100;
+    private final int ttsWait = 20;
     private MainActivity GUI;
 
-    public TexttoSpeech(MainActivity GUI, Context context){
+    public TexttoSpeech(MainActivity GUI){
         this.GUI = GUI;
-        tts = new TextToSpeech(context, this);
+        tts = new TextToSpeech(GUI, this);
     }
 
     //implementation of OnInitListener
@@ -42,12 +42,13 @@ public class TexttoSpeech implements TextToSpeech.OnInitListener{
     //speaks given dialogue "message" and waits until finish
     public void speak(String message){
         tts.speak(message, TextToSpeech.QUEUE_FLUSH, null);
-        while (tts.isSpeaking()) {
-            try {
+        try {
+            Thread.sleep(100);
+            while (tts.isSpeaking()) {
                 Thread.sleep(ttsWait);
-            } catch (InterruptedException e) {
-                GUI.displayToast("InterruptedException Error!");
             }
+        }catch(InterruptedException e){
+            GUI.displayToast("InterruptedException Error!");
         }
     }
 
